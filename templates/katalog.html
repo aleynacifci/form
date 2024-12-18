@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kitaplar Listesi</title>
+</head>
+<body>
+    <h1>::: Kitaplar :::</h1>
+    <!-- Arama Formu -->
+    <form method="get" action="/katalog">
+        <input type="text" name="q" placeholder="Kitap adı veya yazar ara" value="{{ query }}">
+        <button type="submit">Ara</button>
+    </form>
+    <hr>
+    <!-- Kitap Listesi -->
+    {% if query %}
+        <ol>
+            {% if data %}
+                {% for book in data %}
+                    <li>{{ book.TITLE }} - {{ book.AUTHOR }}</li>
+                {% endfor %}
+            {% else %}
+                <p>Aradığınız kriterlere uygun kitap bulunamadı.</p>
+            {% endif %}
+        </ol>
+    {% endif %}
+</body>
+</html>
