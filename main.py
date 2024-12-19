@@ -36,8 +36,8 @@ def katalog():
     if search_query:  # Kullanıcı arama yapmışsa filtrele
         filtered_books = [
             book for book in books 
-            if search_query.lower() in book["TITLE"].lower() 
-            or search_query.lower() in book["AUTHOR"].lower()
+            if search_query in book["TITLE"]
+            or search_query in book["AUTHOR"]
         ]
     
     return render_template('katalog.html', data=filtered_books, query=search_query)
